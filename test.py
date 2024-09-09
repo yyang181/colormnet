@@ -36,7 +36,7 @@ parser.add_argument('--FirstFrameIsNotExemplar', help='Whether the provided refe
 
 # dataset setting
 parser.add_argument('--d16_batch_path', default='input')
-parser.add_argument('--deoldify_path', default='ref')
+parser.add_argument('--ref_path', default='ref')
 parser.add_argument('--output', default='result')
 
 # For generic (G) evaluation, point to a folder that contains "JPEGImages" and "Annotations"
