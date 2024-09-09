@@ -91,7 +91,7 @@ CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.run \
     --master_port 25205 \
     --nproc_per_node=1 \
     train.py \
-    --exp_id DINOv2FeatureV6_LocalAtten_NTIRE2023dataset \
+    --exp_id DINOv2FeatureV6_LocalAtten_DAVISVidevo \
     --davis_root /path/to/your/training/data/\
     --validation_root /path/to/your/validation/data\
     --savepath ./wandb_save_dir
