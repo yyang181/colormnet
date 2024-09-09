@@ -11,7 +11,7 @@ class DAVISTestDataset_221128_TransColorization_batch:
         self.size_dir = data_root
         self.size = size
 
-        self.vid_list =  [clip_name for clip_name in sorted(os.listdir(data_root)) if clip_name != '.DS_Store']
+        self.vid_list =  [clip_name for clip_name in sorted(os.listdir(data_root)) if clip_name != '.DS_Store' and not clip_name.startswith('.')]
 
         # print(lst, len(lst), self.vid_list, self.vid_list_DAVIS2016, path.join(data_root, 'ImageSets', imset));assert 1==0
 
