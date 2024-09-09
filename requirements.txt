@@ -8,3 +8,4 @@ scikit-image
 einops
 torch
 opencv-python-headless
+wandb 

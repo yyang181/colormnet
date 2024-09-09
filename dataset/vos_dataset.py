@@ -13,9 +13,9 @@ from dataset.reseed import reseed
 
 import util.functional as F
 
-class VOSDataset_221128_TransColorization_batch(Dataset):
+class DAVISVidevoDataset(Dataset):
     """
-    Works for DAVIS/YouTubeVOS/BL30K training
+    Works for DAVIS/Videvo/NVCC2023 training
     For each sequence:
     - Pick three frames
     - Pick two objects
@@ -33,13 +33,13 @@ class VOSDataset_221128_TransColorization_batch(Dataset):
 
         self.videos = []
         self.frames = {}
-        vid_list = sorted(os.listdir(self.im_root))
+        vid_list = sorted([vid for vid in os.listdir(self.im_root) if not vid.startswith('.')])
         # Pre-filtering
         for vid in vid_list:
             if subset is not None:
                 if vid not in subset:
                     continue
-            frames = sorted(os.listdir(os.path.join(self.im_root, vid)))
+            frames = sorted([img for img in os.listdir(os.path.join(self.im_root, vid)) if not img.startswith('.')])
             if len(frames) < num_frames:
                 continue
             self.frames[vid] = frames

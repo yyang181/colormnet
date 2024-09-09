@@ -16,6 +16,7 @@ Nanjing University of Science and Technology
 
 ## 🔥 News
 <!-- - [2024-09-01] Integrated to :hugs: [Hugging Face](https://huggingface.co/spaces). Try out online demo! [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/yyang181/ColorMNet) -->
+- [2024-09-09] Add training code, see [train.py](https://github.com/yyang181/colormnet/blob/main/train.py).
 - [2024-09-09] Colab demo for ColorMNet is available at [![google colab logo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1naXws0elPMunfcvKSryLW1lFnPOF6Nb-?usp=sharing).
 - [2024-09-07] Add inference code and pretrained weights, see [test.py](https://github.com/yyang181/colormnet/blob/main/test.py).
 - [2024-04-13] Project page released at [ColorMNet Project](https://yyang181.github.io/ColorMNet). Please be patient and stay updated.
@@ -67,8 +68,37 @@ Download the pretrained models manually and put them in `./saves` (create the fo
 CUDA_VISIBLE_DEVICES=0 python test.py
 ```
 
+## Train
+### Dataset structure for both the training set and the validation set
+```
+# Specify --davis_root and --validation_root
+data_root/
+├── 001/
+│   ├── 00000.png
+│   ├── 00001.png
+│   ├── 00002.png
+│   └── ...
+├── 002/
+│   ├── 00000.png
+│   ├── 00001.png
+│   ├── 00002.png
+│   └── ...
+└── ...
+```
+### Training script
+```
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.run \
+    --master_port 25205 \
+    --nproc_per_node=1 \
+    train.py \
+    --exp_id DINOv2FeatureV6_LocalAtten_NTIRE2023dataset \
+    --davis_root /path/to/your/training/data/\
+    --validation_root /path/to/your/validation/data\
+    --savepath ./wandb_save_dir
+```
+
 ### To Do
-- [ ] Release training code
+- [x] Release training code
 - [x] Release testing code
 - [x] Release pre-trained models
 - [x] Release demo

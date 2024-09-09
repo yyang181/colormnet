@@ -35,9 +35,9 @@ class VideoReader_221128_TransColorization(Dataset):
         else:
             self.size_dir = size_dir
 
-        self.frames = [img for img in sorted(os.listdir(self.image_dir)) if img.endswith('.jpg') or img.endswith('.png')]
-        self.palette = Image.open(path.join(mask_dir, sorted(os.listdir(mask_dir))[0])).getpalette()
-        self.first_gt_path = path.join(self.mask_dir, sorted(os.listdir(self.mask_dir))[0])
+        self.frames = [img for img in sorted(os.listdir(self.image_dir)) if (img.endswith('.jpg') or img.endswith('.png')) and not img.startswith('.')]
+        self.palette = Image.open(path.join(mask_dir, sorted([msk for msk in os.listdir(mask_dir) if not msk.startswith('.')])[0])).getpalette()
+        self.first_gt_path = path.join(self.mask_dir, sorted([msk for msk in os.listdir(self.mask_dir) if not msk.startswith('.')])[0])
         self.suffix = self.first_gt_path.split('.')[-1]
 
         if size < 0:

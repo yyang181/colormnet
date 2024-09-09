@@ -12,6 +12,7 @@ wandb/
 pretrain/
 Pytorch-Correlation-extension/
 result
+wandb_save_dir/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
