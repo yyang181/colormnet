@@ -2,7 +2,7 @@
 
 ### [Project Page](https://yyang181.github.io/colormnet/) | [Paper (ArXiv)](https://arxiv.org/abs/2404.06251) | [Supplemental Material](https://arxiv.org/abs/2404.06251) | [Code (Github)](https://github.com/yyang181/colormnet) 
 
-[![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/yyang181/ColorMNet) ![visitors](https://visitor-badge.laobi.icu/badge?page_id=yyang181/colormnet)[![GitHub Stars](https://img.shields.io/github/stars/yyang181/colormnet?style=social)](https://github.com/yyang181/colormnet)
+[![google colab logo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1naXws0elPMunfcvKSryLW1lFnPOF6Nb-?usp=sharing) [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/yyang181/ColorMNet) ![visitors](https://visitor-badge.laobi.icu/badge?page_id=yyang181/colormnet)[![GitHub Stars](https://img.shields.io/github/stars/yyang181/colormnet?style=social)](https://github.com/yyang181/colormnet)
 
 
 **This repository is the official pytorch implementation of our paper, *ColorMNet: A Memory-based Deep Spatial-Temporal Feature Propagation Network for Video Colorization*.**
@@ -16,6 +16,7 @@ Nanjing University of Science and Technology
 
 ## 🔥 News
 <!-- - [2024-09-01] Integrated to :hugs: [Hugging Face](https://huggingface.co/spaces). Try out online demo! [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/yyang181/ColorMNet) -->
+- [2024-09-09] Colab demo for ColorMNet is available at [![google colab logo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1naXws0elPMunfcvKSryLW1lFnPOF6Nb-?usp=sharing).
 - [2024-09-07] Add inference code and pretrained weights, see [test.py](https://github.com/yyang181/colormnet/blob/main/test.py).
 - [2024-04-13] Project page released at [ColorMNet Project](https://yyang181.github.io/ColorMNet). Please be patient and stay updated.
 
