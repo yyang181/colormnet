@@ -83,8 +83,11 @@ class VideoReader_221128_TransColorization(Dataset):
         if load_mask and path.exists(gt_path):
             mask = Image.open(gt_path).convert('RGB')
             mask = self.im_transform(mask)
-            mask_ab = mask[1:3,:,:]
-            data['mask'] = mask_ab
+
+            # keep L channel of reference image in case First frame is not exemplar
+            # mask_ab = mask[1:3,:,:]
+            # data['mask'] = mask_ab
+            data['mask'] = mask
 
         info['shape'] = shape
         info['need_resize'] = not (self.size < 0)

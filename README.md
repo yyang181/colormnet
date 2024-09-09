@@ -65,7 +65,8 @@ Download the pretrained models manually and put them in `./saves` (create the fo
 - **Test on Images**: 
 
 ```
-CUDA_VISIBLE_DEVICES=0 python test.py
+CUDA_VISIBLE_DEVICES=0 python test.py 
+# Add --FirstFrameIsNotExemplar if the reference frame is not exactly the first input image. Please make sure the ref frame and the input frames are of the same size. 
 ```
 
 ## Train

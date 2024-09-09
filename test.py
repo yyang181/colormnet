@@ -32,6 +32,7 @@ Arguments loading
 """
 parser = ArgumentParser()
 parser.add_argument('--model', default='saves/DINOv2FeatureV6_LocalAtten_s2_154000.pth')
+parser.add_argument('--FirstFrameIsNotExemplar', help='Whether the provided reference frame is exactly the first input frame', action='store_true')
 
 # dataset setting
 parser.add_argument('--d16_batch_path', default='input')
@@ -107,7 +108,7 @@ else:
 
 if args.split == 'val':
     # Set up Dataset, a small hack to use the image set in the 2017 folder because the 2016 one is of a different format
-    meta_dataset = DAVISTestDataset_221128_TransColorization_batch(args.d16_batch_path, imset=args.deoldify_path, size=args.size)
+    meta_dataset = DAVISTestDataset_221128_TransColorization_batch(args.d16_batch_path, imset=args.ref_path, size=args.size)
 else:
     raise NotImplementedError
 palette = None
@@ -150,7 +151,11 @@ for vid_reader in progressbar(meta_loader, max_value=len(meta_dataset), redirect
     for ti, data in enumerate(loader):
         with torch.cuda.amp.autocast(enabled=not args.benchmark):
             rgb = data['rgb'].cuda()[0]
+            
             msk = data.get('mask')
+            if not config['FirstFrameIsNotExemplar']:
+                msk = msk[:,1:3,:,:] if msk is not None else None
+                
             info = data['info']
             frame = info['frame'][0]
             shape = info['shape']
@@ -187,7 +192,10 @@ for vid_reader in progressbar(meta_loader, max_value=len(meta_dataset), redirect
                 labels = None
     
             # Run the model on this frame
-            prob = processor.step(rgb, msk, labels, end=(ti==vid_length-1))
+            if config['FirstFrameIsNotExemplar']:
+                prob = processor.step_AnyExemplar(rgb, msk[:1,:,:].repeat(3,1,1) if msk is not None else None, msk[1:3,:,:] if msk is not None else None, labels, end=(ti==vid_length-1))
+            else:
+                prob = processor.step(rgb, msk, labels, end=(ti==vid_length-1))
 
             # Upsample to original size if needed
             if need_resize:
