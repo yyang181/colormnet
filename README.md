@@ -62,7 +62,9 @@ Download the pretrained models manually and put them in `./saves` (create the fo
 
 ## :zap: Quick Inference
 
-- **Test on Images**: 
+- **Test on Images**:  
+
+  For Windows users, please follow [RuntimeError](https://github.com/yyang181/colormnet/issues/5#issuecomment-2339263103) to avoid multiprocessor Runtime error in data loader. Thanks to [@UPstud](https://github.com/UPstud). 
 
 ```
 CUDA_VISIBLE_DEVICES=0 python test.py 
