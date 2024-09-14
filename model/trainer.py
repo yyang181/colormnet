@@ -117,6 +117,8 @@ class ColorMNetTrainer:
                 with torch.cuda.amp.autocast(enabled=not config['benchmark']):
                     rgb = data['rgb'].cuda()[0]
                     msk = data.get('mask')
+                    msk = msk[:,1:3,:,:] if msk is not None else None
+
                     info = data['info']
                     frame = info['frame'][0]
                     shape = info['shape']
