@@ -58,7 +58,7 @@ Download the pretrained models manually and put them in `./saves` (create the fo
 
 |   Name    |                             URL                              |
 | :-------: | :----------------------------------------------------------: |
-| ColorMNet | [model](https://drive.google.com/file/d/1PNxrNSoO0Uf8JeDkn3IZ9ouW1Y72jWaD/view?usp=share_link) |
+| ColorMNet | [model](https://github.com/yyang181/colormnet/releases/download/v0.1/DINOv2FeatureV6_LocalAtten_s2_154000.pth) |
 
 ## :zap: Quick Inference
 
