@@ -16,6 +16,7 @@ Nanjing University of Science and Technology
 
 ## 🔥 News
 <!-- - [2024-09-01] Integrated to :hugs: [Hugging Face](https://huggingface.co/spaces). Try out online demo! [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/yyang181/ColorMNet) -->
+- [2024-11-14] Add matrics evaluation code, see [evaluation.py](https://github.com/yyang181/colormnet/blob/main/evaluation_matrics/evaluation.py). Demo command ```pip install lpips && python evaluation_matrics/evaluation.py```.
 - [2024-09-09] Add training code, see [train.py](https://github.com/yyang181/colormnet/blob/main/train.py).
 - [2024-09-09] Colab demo for ColorMNet is available at [![google colab logo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1naXws0elPMunfcvKSryLW1lFnPOF6Nb-?usp=sharing).
 - [2024-09-07] Add inference code and pretrained weights, see [test.py](https://github.com/yyang181/colormnet/blob/main/test.py).
