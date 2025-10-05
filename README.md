@@ -15,7 +15,10 @@
 Nanjing University of Science and Technology
 
 ## 🔥 News
-<!-- - [2024-09-01] Integrated to :hugs: [Hugging Face](https://huggingface.co/spaces). Try out online demo! [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/yyang181/ColorMNet) -->
+- [2025-10-05] Integrated with 🤗 [**Hugging Face**](https://huggingface.co/spaces)!  
+  Try out the **online demo** here → [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/yyang181/ColorMNet).  
+  *Note:* Due to the **HF Pro Zero-GPU quota**, this space currently has **only 25 minutes of Zero-GPU runtime per day**. Please consider running the demo locally [app.py](https://github.com/yyang181/colormnet/blob/main/app.py) or on [Colab](https://colab.research.google.com/drive/1naXws0elPMunfcvKSryLW1lFnPOF6Nb-?usp=sharing) if you need more time.
+- [2025-10-05] Add Gradio demo, see [app.py](https://github.com/yyang181/colormnet/blob/main/app.py)
 - [2024-11-14] Add matrics evaluation code, see [evaluation.py](https://github.com/yyang181/colormnet/blob/main/evaluation_matrics/evaluation.py). Demo command ```pip install lpips && python evaluation_matrics/evaluation.py```.
 - [2024-09-09] Add training code, see [train.py](https://github.com/yyang181/colormnet/blob/main/train.py).
 - [2024-09-09] Colab demo for ColorMNet is available at [![google colab logo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1naXws0elPMunfcvKSryLW1lFnPOF6Nb-?usp=sharing).
@@ -35,7 +38,7 @@ Nanjing University of Science and Technology
 ```
 # git clone this repository
 
-conda create -n colormnet python=3.8 
+conda create -n colormnet python=3.8 -y
 conda activate colormnet 
 
 pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 --index-url https://download.pytorch.org/whl/cu118
@@ -71,6 +74,11 @@ Download the pretrained models manually and put them in `./saves` (create the fo
 CUDA_VISIBLE_DEVICES=0 python test.py 
 # Add --FirstFrameIsNotExemplar if the reference frame is not exactly the first input image. Please make sure the ref frame and the input frames are of the same size. 
 ```
+
+## Gradio Demo:
+```bash
+CUDA_VISIBLE_DEVICES=0 python app.py
+``` 
 
 ## Train
 ### Dataset structure for both the training set and the validation set

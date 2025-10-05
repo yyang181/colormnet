@@ -61,6 +61,11 @@ def main():
     parser.add_argument('--ref_path', default='ref')
     parser.add_argument('--output', default='result')
 
+    parser.add_argument('--reverse', default=False, action='store_true', help='whether to reverse the frame order')
+
+    parser.add_argument('--allow_resume', action='store_true', 
+                help='skip existing videos that have been colorized', )
+
     # For generic (G) evaluation, point to a folder that contains "JPEGImages" and "Annotations"
     parser.add_argument('--generic_path')
     parser.add_argument('--dataset', help='D16/D17/Y18/Y19/LV1/LV3/G', default='D16_batch')
@@ -111,7 +116,7 @@ def main():
 
     if args.split == 'val':
         # Set up Dataset, a small hack to use the image set in the 2017 folder because the 2016 one is of a different format
-        meta_dataset = DAVISTestDataset_221128_TransColorization_batch(args.d16_batch_path, imset=args.ref_path, size=args.size)
+        meta_dataset = DAVISTestDataset_221128_TransColorization_batch(args.d16_batch_path, imset=args.ref_path, size=args.size, args=args)
     else:
         raise NotImplementedError
     palette = None
@@ -150,6 +155,13 @@ def main():
         mapper = MaskMapper()
         processor = InferenceCore(network, config=config)
         first_mask_loaded = False
+
+        # skip existing videos 
+        if args.allow_resume:
+            this_out_path = path.join(out_path, vid_name)
+            if path.exists(this_out_path):
+                print(f'Skipping {this_out_path} because output already exists.')
+                continue
 
         for ti, data in enumerate(loader):
             with torch.cuda.amp.autocast(enabled=not args.benchmark):

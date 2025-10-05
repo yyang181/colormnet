@@ -13,6 +13,8 @@ pretrain/
 Pytorch-Correlation-extension/
 result
 wandb_save_dir/
+_colormnet_tmp/
+DINOv2FeatureV6_LocalAtten_s2_154000.pth
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

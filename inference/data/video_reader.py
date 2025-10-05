@@ -14,7 +14,7 @@ class VideoReader_221128_TransColorization(Dataset):
     """
     This class is used to read a video, one frame at a time
     """
-    def __init__(self, vid_name, image_dir, mask_dir, size=-1, to_save=None, use_all_mask=False, size_dir=None):
+    def __init__(self, vid_name, image_dir, mask_dir, size=-1, to_save=None, use_all_mask=False, size_dir=None, args=None):
         """
         image_dir - points to a directory of jpg images
         mask_dir - points to a directory of png masks
@@ -35,7 +35,8 @@ class VideoReader_221128_TransColorization(Dataset):
         else:
             self.size_dir = size_dir
 
-        self.frames = [img for img in sorted(os.listdir(self.image_dir)) if (img.endswith('.jpg') or img.endswith('.png')) and not img.startswith('.')]
+        flag_reverse = getattr(args, 'reverse', False) if args is not None else False
+        self.frames = [img for img in sorted(os.listdir(self.image_dir), reverse=flag_reverse) if (img.endswith('.jpg') or img.endswith('.png')) and not img.startswith('.')]
         self.palette = Image.open(path.join(mask_dir, sorted([msk for msk in os.listdir(mask_dir) if not msk.startswith('.')])[0])).getpalette()
         self.first_gt_path = path.join(self.mask_dir, sorted([msk for msk in os.listdir(self.mask_dir) if not msk.startswith('.')])[0])
         self.suffix = self.first_gt_path.split('.')[-1]
@@ -82,6 +83,10 @@ class VideoReader_221128_TransColorization(Dataset):
         load_mask = self.use_all_mask or (gt_path == self.first_gt_path)
         if load_mask and path.exists(gt_path):
             mask = Image.open(gt_path).convert('RGB')
+            
+            # 用 PIL 先 resize 成和 img 尺寸一致
+            mask = mask.resize((img.shape[2], img.shape[1]), Image.BILINEAR)
+
             mask = self.im_transform(mask)
 
             # keep L channel of reference image in case First frame is not exemplar
