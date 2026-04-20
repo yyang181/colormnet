@@ -27,7 +27,7 @@ Nanjing University of Science and Technology
 
 ## Requirements
 
-* Python 3.8+
+* Python 3.10+. **This is a GPU-based project. A CUDA-capable NVIDIA GPU is required.** The `spatial_correlation_sampler` dependency (installed via `Pytorch-Correlation-extension`) requires CUDA and will not run on CPU-only setups.
 * PyTorch 1.11+ (See [PyTorch](https://pytorch.org/) for installation instructions)
 * `torchvision` corresponding to the PyTorch version
 * OpenCV (try `pip install opencv-python`)
@@ -38,7 +38,7 @@ Nanjing University of Science and Technology
 ```
 # git clone this repository
 
-conda create -n colormnet python=3.8 -y
+conda create -n colormnet python=3.10 -y
 conda activate colormnet 
 
 pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 --index-url https://download.pytorch.org/whl/cu118
