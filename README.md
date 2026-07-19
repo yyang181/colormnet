@@ -15,6 +15,7 @@
 Nanjing University of Science and Technology
 
 ## 🔥 News
+- [2026-07-19] Thanks [David](https://www.youtube.com/@DavidAddis) for creating and sharing a YouTube video, [The Hound of the Baskervilles](https://youtu.be/_6619FZOecs?is=1Z5ejwQYGXRguPyi), using **ColorMNet**.   
 - [2026-04-20] Thanks [@dan64](https://github.com/dan64) for developing the [CMNET2](https://github.com/dan64/cmnet2) project, which extends ColorMNet with an improved three-tier memory architecture inspired by XMem++, enabling robust colorization of long videos with hundreds of reference frames, for more details please see [#issue22](https://github.com/yyang181/colormnet/issues/22).
 - [2025-10-05] Integrated with 🤗 [**Hugging Face**](https://huggingface.co/spaces)!  
   Try out the **online demo** here → [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/yyang181/ColorMNet).  
